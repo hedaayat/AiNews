@@ -60,9 +60,18 @@ src/ainews/
 
 ## Data Storage
 
-- `data/sources.json` - News source configurations
+- `data/sources.json` - News source configurations (20 pre-configured feeds)
+- `data/source_candidates.json` - Candidate sources for adding
 - `data/articles/YYYY-MM-DD.json` - Articles partitioned by date
 - `data/summaries/YYYY-MM-DD.json` - Generated summaries by date
+
+## Source Categories
+
+The app includes 20 curated sources across categories:
+- **Company blogs**: OpenAI, Google AI, DeepMind, Microsoft Research, NVIDIA, Hugging Face
+- **News sites**: MIT Tech Review, The Verge, Ars Technica, VentureBeat
+- **Academic**: BAIR, MIT News, arXiv (cs.AI, cs.LG)
+- **Newsletters**: The Gradient, AI Alignment Forum, Sebastian Raschka, Andrej Karpathy, Distill
 
 ## Configuration
 

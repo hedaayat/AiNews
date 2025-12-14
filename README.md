@@ -75,18 +75,24 @@ Set these environment variables (or in `.env`):
 | `AINEWS_EMAIL_FROM` | For email | Sender address |
 | `AINEWS_EMAIL_TO` | For email | Recipients (JSON array) |
 
-## Default Sources
+## Default Sources (20 feeds)
 
-The app comes pre-configured with these AI news sources:
+The app comes pre-configured with curated AI news sources:
 
-- OpenAI Blog
-- Anthropic News
-- Google AI Blog
-- MIT Technology Review - AI
-- The Verge - AI
-- Ars Technica
-- VentureBeat - AI
-- Hugging Face Blog
+**Company Blogs**
+- OpenAI (News + Blog), Google AI, Google DeepMind
+- Microsoft Research, NVIDIA Developer, Hugging Face
+
+**News & Analysis**
+- MIT Technology Review, The Verge, Ars Technica, VentureBeat
+
+**Academic & Research**
+- BAIR (Berkeley AI Research), MIT News AI
+- arXiv cs.AI, arXiv cs.LG
+
+**Newsletters & Independent**
+- The Gradient, AI Alignment Forum
+- Sebastian Raschka (Ahead of AI), Andrej Karpathy, Distill
 
 ## Scheduling
 
