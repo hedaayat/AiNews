@@ -134,8 +134,16 @@ class Summarizer:
     ) -> DailySummary:
         """Parse Claude's response into a DailySummary."""
         try:
+            # Strip markdown code blocks if present
+            text = response_text.strip()
+            if text.startswith("```"):
+                lines = text.split("\n")
+                # Remove lines that are just ``` or ```json
+                lines = [line for line in lines if not line.strip().startswith("```")]
+                text = "\n".join(lines).strip()
+
             # Try to parse as JSON
-            data = json.loads(response_text)
+            data = json.loads(text)
 
             notable_stories = []
             for story in data.get("notable_stories", []):
