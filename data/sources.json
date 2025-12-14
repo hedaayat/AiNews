@@ -1,0 +1,150 @@
+{
+  "items": [
+    {
+      "id": "openai-blog",
+      "name": "OpenAI Blog",
+      "url": "https://openai.com/blog/rss.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:30:31.213981",
+      "fetch_interval_hours": 12,
+      "tags": [
+        "openai",
+        "research",
+        "announcements"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "Official OpenAI announcements and research"
+    },
+    {
+      "id": "anthropic-news",
+      "name": "Anthropic News",
+      "url": "https://www.anthropic.com/news/rss",
+      "source_type": "rss",
+      "enabled": false,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:29:44.547388",
+      "fetch_interval_hours": 12,
+      "tags": [
+        "anthropic",
+        "claude",
+        "research"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "Official Anthropic news and announcements"
+    },
+    {
+      "id": "google-ai-blog",
+      "name": "Google AI Blog",
+      "url": "https://blog.google/technology/ai/rss/",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:30:30.630314",
+      "fetch_interval_hours": 12,
+      "tags": [
+        "google",
+        "deepmind",
+        "research"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "Google AI and DeepMind updates"
+    },
+    {
+      "id": "mit-tech-review-ai",
+      "name": "MIT Technology Review - AI",
+      "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:30:30.597313",
+      "fetch_interval_hours": 6,
+      "tags": [
+        "mit",
+        "research",
+        "analysis"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "In-depth AI analysis and research coverage"
+    },
+    {
+      "id": "the-verge-ai",
+      "name": "The Verge - AI",
+      "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:30:30.531723",
+      "fetch_interval_hours": 4,
+      "tags": [
+        "tech-news",
+        "industry"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "Tech news perspective on AI developments"
+    },
+    {
+      "id": "ars-technica-ai",
+      "name": "Ars Technica - AI",
+      "url": "https://feeds.arstechnica.com/arstechnica/features/",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:30:30.834440",
+      "fetch_interval_hours": 6,
+      "tags": [
+        "tech-news",
+        "analysis"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "Technical deep-dives on AI topics"
+    },
+    {
+      "id": "venturebeat-ai",
+      "name": "VentureBeat - AI",
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:30:31.307506",
+      "fetch_interval_hours": 4,
+      "tags": [
+        "business",
+        "industry",
+        "startups"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "AI business and enterprise news"
+    },
+    {
+      "id": "huggingface-blog",
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": "2025-12-14T01:30:30.780425",
+      "fetch_interval_hours": 12,
+      "tags": [
+        "open-source",
+        "models",
+        "tools"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2024-01-01T00:00:00",
+      "notes": "Open-source AI models and tools"
+    }
+  ],
+  "metadata": {
+    "count": 8,
+    "last_updated": "2025-12-14T01:30:31.309515"
+  }
+}
