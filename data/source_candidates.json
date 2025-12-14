@@ -1,0 +1,110 @@
+[
+  {
+    "name": "OpenAI — News",
+    "type": "rss",
+    "url": "https://openai.com/news/rss.xml",
+    "notes": "Official announcements and technical updates. Some feed readers may need a normal User-Agent header."
+  },
+  {
+    "name": "OpenAI — Blog",
+    "type": "rss",
+    "url": "https://openai.com/blog/rss.xml",
+    "notes": "Official long-form posts. Some feed readers may need a normal User-Agent header."
+  },
+  {
+    "name": "Google Blog — AI (The Keyword category)",
+    "type": "rss",
+    "url": "https://blog.google/rss/",
+    "notes": "Official Google blog RSS endpoint linked from the AI category pages; you may need to filter by category on your side." 
+  },
+  {
+    "name": "Google DeepMind — Blog (feed)",
+    "type": "rss",
+    "url": "https://deepmind.google/blog/feed/basic",
+    "notes": "DeepMind’s official blog feed."
+  },
+  {
+    "name": "Google Research — Blog (site feed)",
+    "type": "site",
+    "url": "https://research.google/blog/",
+    "notes": "Research posts; the site is authoritative, but an explicit RSS URL is not clearly exposed on-page."
+  },
+  {
+    "name": "Microsoft Research — Blog",
+    "type": "rss",
+    "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+    "notes": "In-depth articles written by MSR researchers."
+  },
+  {
+    "name": "BAIR (Berkeley AI Research) — Blog",
+    "type": "rss",
+    "url": "https://bair.berkeley.edu/blog/feed",
+    "notes": "Researcher-written posts from Berkeley AI Research."
+  },
+  {
+    "name": "MIT News — Artificial Intelligence topic",
+    "type": "rss",
+    "url": "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml",
+    "notes": "Primary MIT News posts tagged to AI."
+  },
+  {
+    "name": "arXiv — cs.AI (Artificial Intelligence)",
+    "type": "rss",
+    "url": "https://export.arxiv.org/rss/cs.AI",
+    "notes": "Primary preprint stream (not commentary). Good for detecting new papers early."
+  },
+  {
+    "name": "arXiv — cs.LG (Machine Learning)",
+    "type": "rss",
+    "url": "https://export.arxiv.org/rss/cs.LG",
+    "notes": "Primary preprint stream (not commentary)."
+  },
+  {
+    "name": "arXiv API (Atom; queryable)",
+    "type": "atom",
+    "url": "https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=50",
+    "notes": "Programmatic feed (Atom). Useful if your tool supports Atom and you want query control."
+  },
+  {
+    "name": "Hugging Face — Blog",
+    "type": "rss",
+    "url": "https://huggingface.co/blog/feed.xml",
+    "notes": "High-signal practitioner research/engineering posts."
+  },
+  {
+    "name": "NVIDIA Developer Blog",
+    "type": "rss",
+    "url": "https://developer.nvidia.com/blog/feed",
+    "notes": "Strong for applied AI systems, inference/training optimization, hardware/software co-design."
+  },
+  {
+    "name": "The Gradient (researcher-written magazine)",
+    "type": "rss",
+    "url": "https://thegradientpub.substack.com/feed",
+    "notes": "Long-form analysis and interviews by researchers/builders."
+  },
+  {
+    "name": "AI Alignment Forum",
+    "type": "rss",
+    "url": "https://www.alignmentforum.org/feed.xml",
+    "notes": "Primary venue for technical alignment writing; high-signal but narrower focus."
+  },
+  {
+    "name": "Sebastian Raschka — Newsletter (Ahead of AI)",
+    "type": "rss",
+    "url": "https://magazine.sebastianraschka.com/feed",
+    "notes": "Researcher/practitioner commentary; consistently high quality."
+  },
+  {
+    "name": "Andrej Karpathy — Blog",
+    "type": "rss",
+    "url": "https://karpathy.github.io/feed.xml",
+    "notes": "Infrequent but excellent first-principles posts."
+  },
+  {
+    "name": "Distill (archival, still useful)",
+    "type": "rss",
+    "url": "https://distill.pub/rss.xml",
+    "notes": "Not current, but foundational explanations; good for evergreen depth."
+  }
+]

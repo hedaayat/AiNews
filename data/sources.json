@@ -141,10 +141,237 @@
       "discovered_by_ai": false,
       "added_at": "2024-01-01T00:00:00",
       "notes": "Open-source AI models and tools"
+    },
+    {
+      "id": "openai-news",
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/rss.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "openai",
+        "announcements"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:15.651793",
+      "notes": null
+    },
+    {
+      "id": "google-deepmind-blog",
+      "name": "Google DeepMind Blog",
+      "url": "https://deepmind.google/blog/feed/basic",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "google",
+        "deepmind",
+        "research"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:16.647345",
+      "notes": null
+    },
+    {
+      "id": "microsoft-research-blog",
+      "name": "Microsoft Research Blog",
+      "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "microsoft",
+        "research"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:17.699956",
+      "notes": null
+    },
+    {
+      "id": "bair-blog",
+      "name": "BAIR Blog",
+      "url": "https://bair.berkeley.edu/blog/feed",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "berkeley",
+        "research",
+        "academic"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:18.668049",
+      "notes": null
+    },
+    {
+      "id": "mit-news-ai",
+      "name": "MIT News AI",
+      "url": "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "mit",
+        "research",
+        "academic"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:19.648725",
+      "notes": null
+    },
+    {
+      "id": "arxiv-csai",
+      "name": "arXiv cs.AI",
+      "url": "https://export.arxiv.org/rss/cs.AI",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "arxiv",
+        "papers",
+        "research"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:20.618367",
+      "notes": null
+    },
+    {
+      "id": "arxiv-cslg",
+      "name": "arXiv cs.LG",
+      "url": "https://export.arxiv.org/rss/cs.LG",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "arxiv",
+        "papers",
+        "ml"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:21.665704",
+      "notes": null
+    },
+    {
+      "id": "nvidia-developer-blog",
+      "name": "NVIDIA Developer Blog",
+      "url": "https://developer.nvidia.com/blog/feed",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "nvidia",
+        "hardware",
+        "optimization"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:22.641351",
+      "notes": null
+    },
+    {
+      "id": "the-gradient",
+      "name": "The Gradient",
+      "url": "https://thegradientpub.substack.com/feed",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "analysis",
+        "interviews"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:23.635528",
+      "notes": null
+    },
+    {
+      "id": "ai-alignment-forum",
+      "name": "AI Alignment Forum",
+      "url": "https://www.alignmentforum.org/feed.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "alignment",
+        "safety"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:24.657460",
+      "notes": null
+    },
+    {
+      "id": "ahead-of-ai-sebastian-raschka",
+      "name": "Ahead of AI (Sebastian Raschka)",
+      "url": "https://magazine.sebastianraschka.com/feed",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "newsletter",
+        "analysis"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:25.626353",
+      "notes": null
+    },
+    {
+      "id": "andrej-karpathy-blog",
+      "name": "Andrej Karpathy Blog",
+      "url": "https://karpathy.github.io/feed.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "practitioner",
+        "tutorials"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:26.598513",
+      "notes": null
+    },
+    {
+      "id": "distill",
+      "name": "Distill",
+      "url": "https://distill.pub/rss.xml",
+      "source_type": "rss",
+      "enabled": true,
+      "scrape_selector": null,
+      "last_fetched": null,
+      "fetch_interval_hours": 24,
+      "tags": [
+        "explanations",
+        "visualizations"
+      ],
+      "discovered_by_ai": false,
+      "added_at": "2025-12-14T18:19:27.564482",
+      "notes": null
     }
   ],
   "metadata": {
-    "count": 8,
-    "last_updated": "2025-12-14T01:30:31.309515"
+    "count": 21,
+    "last_updated": "2025-12-14T18:19:27.565483"
   }
 }
