@@ -25,7 +25,17 @@ class Settings(BaseSettings):
     smtp_username: str = Field(default="", description="SMTP username")
     smtp_password: str = Field(default="", description="SMTP password")
     email_from: str = Field(default="", description="Sender email address")
-    email_to: list[str] = Field(default_factory=list, description="Recipient email addresses")
+    email_to: str = Field(
+        default="",
+        description="Comma-separated recipient email addresses (e.g., 'user1@example.com,user2@example.com')"
+    )
+
+    @property
+    def email_to_list(self) -> list[str]:
+        """Parse email_to string into a list."""
+        if not self.email_to:
+            return []
+        return [email.strip() for email in self.email_to.split(",")]
 
     # Paths
     data_dir: Path = Field(default=Path("data"), description="Data directory")
@@ -61,10 +71,17 @@ class Settings(BaseSettings):
     web_host: str = Field(default="0.0.0.0", description="Web server host")
     web_port: int = Field(default=8000, description="Web server port")
     environment: str = Field(default="development", description="Environment (development/production)")
-    allow_origins: list[str] = Field(
-        default_factory=lambda: ["*"],
-        description="CORS allowed origins",
+    allow_origins: str = Field(
+        default="*",
+        description="CORS allowed origins (comma-separated, e.g., 'https://example.com,https://www.example.com')",
     )
+
+    @property
+    def allow_origins_list(self) -> list[str]:
+        """Parse allow_origins string into a list."""
+        if self.allow_origins == "*":
+            return ["*"]
+        return [origin.strip() for origin in self.allow_origins.split(",")]
 
     @property
     def sources_file(self) -> Path:
