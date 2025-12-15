@@ -1,8 +1,9 @@
 """Service for handling summaries."""
-from datetime import date
+from datetime import date, datetime
+from typing import Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from sqlalchemy import select, desc, func
 
 from ainews.db.models import Summary, NotableStory
 
@@ -14,17 +15,26 @@ class SummaryService:
         """Initialize with database session."""
         self.session = session
 
-    async def get_latest_summary(self) -> Summary | None:
-        """Get today's summary."""
-        # TODO: Implement
-        pass
+    async def get_latest_summary(self) -> Optional[Summary]:
+        """Get today's summary (most recent summary)."""
+        stmt = select(Summary).order_by(desc(Summary.date)).limit(1)
+        result = await self.session.execute(stmt)
+        return result.scalar_one_or_none()
 
-    async def get_summary_by_date(self, date_str: str) -> Summary | None:
-        """Get summary for a specific date."""
-        # TODO: Implement
-        pass
+    async def get_summary_by_date(self, date_str: str) -> Optional[Summary]:
+        """Get summary for a specific date (YYYY-MM-DD format)."""
+        try:
+            summary_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        except ValueError:
+            return None
+
+        stmt = select(Summary).where(Summary.date == summary_date)
+        result = await self.session.execute(stmt)
+        return result.scalar_one_or_none()
 
     async def get_summary_dates(self, limit: int = 30) -> list[str]:
-        """Get list of available summary dates."""
-        # TODO: Implement
-        pass
+        """Get list of available summary dates (most recent first)."""
+        stmt = select(Summary.date).order_by(desc(Summary.date)).limit(limit)
+        result = await self.session.execute(stmt)
+        dates = result.scalars().all()
+        return [d.isoformat() for d in dates]

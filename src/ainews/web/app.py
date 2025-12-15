@@ -43,10 +43,11 @@ async def root():
     return {"message": "AiNews API - Use /health or /api/* endpoints"}
 
 
-# Import routes (will be created in next steps)
-# from ainews.web.routes import api, pages
-# app.include_router(api.router, prefix="/api", tags=["api"])
-# app.include_router(pages.router, tags=["pages"])
+# Import routes
+from ainews.web.routes import api, pages
+
+app.include_router(api.router, prefix="/api", tags=["api"])
+app.include_router(pages.router, tags=["pages"])
 
 
 if __name__ == "__main__":
