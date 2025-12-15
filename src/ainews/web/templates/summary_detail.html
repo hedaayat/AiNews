@@ -3,13 +3,45 @@
 {% block content %}
 <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
     <h1 class="text-4xl font-bold mb-2">AI News Summary</h1>
+    {% if summary %}
+    <p class="text-gray-600 text-lg">{{ summary.date.strftime('%B %d, %Y') }}</p>
+    {% else %}
     <p class="text-gray-600 text-lg">{{ date }}</p>
+    {% endif %}
 </div>
 
-<!-- Content will be populated here -->
-<div class="bg-gray-50 p-6 rounded-lg">
-    <p class="text-gray-600">Loading summary...</p>
+{% if summary %}
+<!-- Key Topics -->
+{% if summary.key_topics %}
+<div class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Key Topics</h2>
+    <div class="flex flex-wrap gap-3">
+        {% for topic in summary.key_topics %}
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">{{ topic }}</span>
+        {% endfor %}
+    </div>
 </div>
+{% endif %}
+
+<!-- Summary Content -->
+<div class="bg-white rounded-lg shadow p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Summary</h2>
+    <p class="text-gray-700 leading-relaxed whitespace-pre-wrap mb-4">
+        {{ summary.summary_text }}
+    </p>
+    <div class="text-sm text-gray-500 border-t pt-4">
+        <p>{{ summary.article_count }} articles analyzed</p>
+        {% if summary.generated_at %}
+        <p>Generated: {{ summary.generated_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        {% endif %}
+    </div>
+</div>
+
+{% else %}
+<div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
+    <p class="text-gray-700">No summary found for {{ date }}.</p>
+</div>
+{% endif %}
 
 <div class="mt-8">
     <a href="/archive" class="text-blue-600 hover:underline font-semibold">← Back to archive</a>

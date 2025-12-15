@@ -8,12 +8,20 @@
 <div class="bg-white rounded-lg shadow p-6">
     <p class="text-gray-600 mb-4">Select a date to view the summary:</p>
 
+    {% if dates %}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Calendar will be populated here -->
-        <div class="p-4 border rounded cursor-pointer hover:bg-blue-50">
-            <p class="font-semibold">December 13, 2025</p>
-            <p class="text-sm text-gray-600">1,512 articles</p>
-        </div>
+        {% for date in dates %}
+        <a href="/archive/{{ date }}" class="p-4 border rounded cursor-pointer hover:bg-blue-50 transition">
+            {% set parts = date.split('-') %}
+            <p class="font-semibold">{{ parts[1] }}/{{ parts[2] }}/{{ parts[0][-2:] }}</p>
+            <p class="text-sm text-gray-600">View summary</p>
+        </a>
+        {% endfor %}
     </div>
+    {% else %}
+    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
+        <p class="text-gray-700">No summaries available yet. Check back soon!</p>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
