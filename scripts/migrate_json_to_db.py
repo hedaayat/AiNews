@@ -30,6 +30,16 @@ async def load_json_file(file_path: Path) -> dict:
         return json.load(f)
 
 
+def parse_iso_datetime(dt_string: Optional[str]) -> Optional[datetime]:
+    """Parse ISO format datetime string to Python datetime object."""
+    if not dt_string:
+        return None
+    try:
+        return datetime.fromisoformat(dt_string)
+    except (ValueError, TypeError):
+        return None
+
+
 async def migrate_sources(session: AsyncSession, data_dir: Path) -> int:
     """Migrate sources from data/sources.json to database."""
     sources_file = data_dir / "sources.json"
@@ -61,15 +71,17 @@ async def migrate_sources(session: AsyncSession, data_dir: Path) -> int:
                 source_type=item.get("source_type", "rss"),
                 enabled=item.get("enabled", True),
                 tags=item.get("tags", []),
-                last_fetched=item.get("last_fetched"),
+                last_fetched=parse_iso_datetime(item.get("last_fetched")),
                 fetch_interval_hours=item.get("fetch_interval_hours", 24),
-                added_at=item.get("added_at"),
+                added_at=parse_iso_datetime(item.get("added_at")),
             )
             session.add(source)
+            await session.flush()  # Flush to catch errors early
             migrated += 1
             print(f"  ✅ Added source: {item['name']}")
         except Exception as e:
-            print(f"  ❌ Error adding source {item.get('id')}: {e}")
+            await session.rollback()  # Rollback failed insert
+            print(f"  ❌ Error adding source {item.get('id')}: {str(e)[:100]}")
 
     await session.commit()
     print(f"✅ Migrated {migrated} sources")
@@ -113,15 +125,16 @@ async def migrate_articles(session: AsyncSession, data_dir: Path) -> int:
                         source_id=item["source_id"],
                         content=item.get("content", ""),
                         content_hash=item.get("content_hash", ""),
-                        published_at=item.get("published_at"),
-                        fetched_at=item.get("fetched_at"),
+                        published_at=parse_iso_datetime(item.get("published_at")),
+                        fetched_at=parse_iso_datetime(item.get("fetched_at")),
                         word_count=item.get("word_count", 0),
                         tags=item.get("tags", []),
                     )
                     session.add(article)
                     migrated += 1
                 except Exception as e:
-                    print(f"    ❌ Error adding article {item.get('id')}: {e}")
+                    await session.rollback()  # Rollback failed insert
+                    print(f"    ❌ Error adding article {item.get('id')}: {str(e)[:80]}")
 
             if migrated > 0:
                 await session.flush()  # Flush to catch constraint violations
