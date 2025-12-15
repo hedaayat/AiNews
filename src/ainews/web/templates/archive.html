@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Archive - Today's AI News{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-8">Archive</h1>
+
+<div class="bg-white rounded-lg shadow p-6">
+    <p class="text-gray-600 mb-4">Select a date to view the summary:</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Calendar will be populated here -->
+        <div class="p-4 border rounded cursor-pointer hover:bg-blue-50">
+            <p class="font-semibold">December 13, 2025</p>
+            <p class="text-sm text-gray-600">1,512 articles</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

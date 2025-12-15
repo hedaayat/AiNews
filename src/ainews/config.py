@@ -51,6 +51,21 @@ class Settings(BaseSettings):
         description="Maximum concurrent fetch operations",
     )
 
+    # Database Settings
+    database_url: str = Field(
+        default="postgresql+asyncpg://localhost/ainews",
+        description="PostgreSQL database URL (async)",
+    )
+
+    # Web Settings
+    web_host: str = Field(default="0.0.0.0", description="Web server host")
+    web_port: int = Field(default=8000, description="Web server port")
+    environment: str = Field(default="development", description="Environment (development/production)")
+    allow_origins: list[str] = Field(
+        default_factory=lambda: ["*"],
+        description="CORS allowed origins",
+    )
+
     @property
     def sources_file(self) -> Path:
         """Path to sources JSON file."""

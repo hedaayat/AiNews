@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Articles - Today's AI News{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-8">All Articles</h1>
+
+<div class="bg-white rounded-lg shadow p-6 mb-8">
+    <h2 class="text-lg font-semibold mb-4">Filters</h2>
+    <div class="space-y-4">
+        <div>
+            <label class="block text-sm font-medium mb-2">Date</label>
+            <input type="date" class="border rounded px-3 py-2 w-full">
+        </div>
+        <div>
+            <label class="block text-sm font-medium mb-2">Source</label>
+            <select class="border rounded px-3 py-2 w-full">
+                <option>All sources</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="space-y-4">
+    <!-- Articles will be populated here -->
+    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition">
+        <h3 class="text-lg font-semibold mb-2">Article Title</h3>
+        <p class="text-sm text-gray-600 mb-2">From <span class="font-semibold">Source Name</span> • Dec 14</p>
+        <p class="text-gray-700 mb-4">Article preview...</p>
+        <a href="#" class="text-blue-600 hover:underline font-semibold">Read full article →</a>
+    </div>
+</div>
+{% endblock %}

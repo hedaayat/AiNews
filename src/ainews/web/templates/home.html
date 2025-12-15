@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+    <h1 class="text-4xl font-bold mb-2">Today's AI News</h1>
+    <p class="text-gray-600 text-lg">December 14, 2025</p>
+</div>
+
+<!-- Key Topics -->
+<div class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Key Topics</h2>
+    <div class="flex flex-wrap gap-3">
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">LLMs</span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Computer Vision</span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Robotics</span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">AI Safety</span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">ML Research</span>
+    </div>
+</div>
+
+<!-- Summary -->
+<div class="bg-white rounded-lg shadow p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Daily Summary</h2>
+    <p class="text-gray-700 leading-relaxed mb-4">
+        Loading today's summary... (Coming soon in Phase 1)
+    </p>
+</div>
+
+<!-- Notable Stories -->
+<div class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Notable Stories</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-600">
+            <h3 class="text-lg font-bold mb-2">Story Title</h3>
+            <p class="text-gray-600 text-sm mb-3">From OpenAI</p>
+            <p class="text-gray-700 mb-4">Brief description of the story...</p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline">Read more →</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="bg-gray-100 rounded-lg p-4 text-center text-gray-600">
+    <p>1,555 articles analyzed from 21 curated sources</p>
+</div>
+
+<!-- Links -->
+<div class="mt-8 text-center space-x-4">
+    <a href="/articles" class="text-blue-600 hover:underline font-semibold">View all articles</a>
+    <span class="text-gray-400">•</span>
+    <a href="/archive" class="text-blue-600 hover:underline font-semibold">Browse archive</a>
+</div>
+{% endblock %}
