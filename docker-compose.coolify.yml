@@ -51,21 +51,6 @@ services:
       - AINEWS_ALLOW_ORIGINS=${AINEWS_ALLOW_ORIGINS:-["https://today.cityzenai.com"]}
     expose:
       - "8000"
-    labels:
-      - "traefik.enable=true"
-      # HTTP → HTTPS redirect
-      - "traefik.http.routers.ainews-http.rule=Host(`today.cityzenai.com`)"
-      - "traefik.http.routers.ainews-http.entryPoints=http"
-      - "traefik.http.routers.ainews-http.middlewares=ainews-redirect"
-      - "traefik.http.middlewares.ainews-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.ainews-redirect.redirectscheme.permanent=true"
-      # HTTPS
-      - "traefik.http.routers.ainews-https.rule=Host(`today.cityzenai.com`)"
-      - "traefik.http.routers.ainews-https.entryPoints=https"
-      - "traefik.http.routers.ainews-https.tls=true"
-      - "traefik.http.routers.ainews-https.tls.certresolver=letsencrypt"
-      # Service
-      - "traefik.http.services.ainews.loadbalancer.server.port=8000"
     depends_on:
       migrate:
         condition: service_completed_successfully
