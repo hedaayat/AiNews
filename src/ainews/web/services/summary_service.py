@@ -23,12 +23,7 @@ class SummaryService:
 
     async def get_summary_by_date(self, date_str: str) -> Optional[Summary]:
         """Get summary for a specific date (YYYY-MM-DD format)."""
-        try:
-            summary_date = datetime.strptime(date_str, "%Y-%m-%d").date()
-        except ValueError:
-            return None
-
-        stmt = select(Summary).where(Summary.date == summary_date)
+        stmt = select(Summary).where(Summary.date == date_str)
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
 
@@ -36,5 +31,4 @@ class SummaryService:
         """Get list of available summary dates (most recent first)."""
         stmt = select(Summary.date).order_by(desc(Summary.date)).limit(limit)
         result = await self.session.execute(stmt)
-        dates = result.scalars().all()
-        return [d.isoformat() for d in dates]
+        return list(result.scalars().all())
