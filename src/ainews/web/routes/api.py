@@ -21,7 +21,7 @@ async def get_latest_summary(session: AsyncSession = Depends(get_db_session)):
         raise HTTPException(status_code=404, detail="No summaries found")
 
     return {
-        "date": summary.date.isoformat(),
+        "date": summary.date,  # Already a string in YYYY-MM-DD format
         "summary": summary.summary_text,
         "key_topics": summary.key_topics,
         "article_count": summary.article_count,
@@ -39,7 +39,7 @@ async def get_summary_by_date(date: str, session: AsyncSession = Depends(get_db_
         raise HTTPException(status_code=404, detail=f"No summary found for date {date}")
 
     return {
-        "date": summary.date.isoformat(),
+        "date": summary.date,  # Already a string in YYYY-MM-DD format
         "summary": summary.summary_text,
         "key_topics": summary.key_topics,
         "article_count": summary.article_count,
