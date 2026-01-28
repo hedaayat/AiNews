@@ -1,44 +1,55 @@
-version: '3.8'
-
 services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=ainews
+      - POSTGRES_USER=ainews
+      - POSTGRES_PASSWORD=ainews_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ainews-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ainews -d ainews"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  migrate:
+    build: .
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      - AINEWS_DATABASE_URL=postgresql+asyncpg://ainews:ainews_dev_password@db:5432/ainews
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+
   web:
     build: .
     container_name: ainews_web
     ports:
       - "8000:8000"
     environment:
-      - AINEWS_DATABASE_URL=${AINEWS_DATABASE_URL}
+      - AINEWS_DATABASE_URL=postgresql+asyncpg://ainews:ainews_dev_password@db:5432/ainews
       - AINEWS_ANTHROPIC_API_KEY=${AINEWS_ANTHROPIC_API_KEY}
-      - AINEWS_ENVIRONMENT=production
+      - AINEWS_ENVIRONMENT=development
       - AINEWS_WEB_HOST=0.0.0.0
       - AINEWS_WEB_PORT=8000
     volumes:
       - ./data:/app/data
-      - ./logs:/app/logs
     restart: unless-stopped
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 5s
-    networks:
-      - ainews_network
+      start_period: 15s
 
-  # Optional: For scheduled tasks (Phase 1)
-  # scheduler:
-  #   build: .
-  #   container_name: ainews_scheduler
-  #   command: python -m ainews.cli run
-  #   environment:
-  #     - AINEWS_DATABASE_URL=${AINEWS_DATABASE_URL}
-  #     - AINEWS_ANTHROPIC_API_KEY=${AINEWS_ANTHROPIC_API_KEY}
-  #   volumes:
-  #     - ./data:/app/data
-  #   restart: unless-stopped
-  #   networks:
-  #     - ainews_network
-
-networks:
-  ainews_network:
-    driver: bridge
+volumes:
+  ainews-db-data:

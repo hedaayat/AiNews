@@ -1,0 +1,73 @@
+services:
+  db:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=${AINEWS_DB_NAME:-ainews}
+      - POSTGRES_USER=${AINEWS_DB_USER:-ainews}
+      - POSTGRES_PASSWORD=${AINEWS_DB_PASSWORD}
+    volumes:
+      - ainews-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${AINEWS_DB_USER:-ainews} -d ${AINEWS_DB_NAME:-ainews}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - default
+
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      - AINEWS_DATABASE_URL=postgresql+asyncpg://${AINEWS_DB_USER:-ainews}:${AINEWS_DB_PASSWORD}@db:5432/${AINEWS_DB_NAME:-ainews}
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - default
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - AINEWS_DATABASE_URL=postgresql+asyncpg://${AINEWS_DB_USER:-ainews}:${AINEWS_DB_PASSWORD}@db:5432/${AINEWS_DB_NAME:-ainews}
+      - AINEWS_ANTHROPIC_API_KEY=${AINEWS_ANTHROPIC_API_KEY}
+      - AINEWS_ENVIRONMENT=production
+      - AINEWS_WEB_HOST=0.0.0.0
+      - AINEWS_WEB_PORT=8000
+      - AINEWS_SMTP_HOST=${AINEWS_SMTP_HOST}
+      - AINEWS_SMTP_PORT=${AINEWS_SMTP_PORT:-587}
+      - AINEWS_SMTP_USERNAME=${AINEWS_SMTP_USERNAME}
+      - AINEWS_SMTP_PASSWORD=${AINEWS_SMTP_PASSWORD}
+      - AINEWS_EMAIL_FROM=${AINEWS_EMAIL_FROM}
+      - AINEWS_EMAIL_TO=${AINEWS_EMAIL_TO}
+      - AINEWS_ALLOW_ORIGINS=${AINEWS_ALLOW_ORIGINS:-["https://today.cityzenai.com"]}
+    expose:
+      - "8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - coolify
+      - default
+
+networks:
+  coolify:
+    external: true
+  default:
+
+volumes:
+  ainews-db-data:
