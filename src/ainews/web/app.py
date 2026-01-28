@@ -37,17 +37,11 @@ async def health_check():
     return {"status": "ok"}
 
 
-@app.get("/")
-async def root():
-    """Root endpoint - redirects to homepage."""
-    return {"message": "AiNews API - Use /health or /api/* endpoints"}
-
-
 # Import routes
 from ainews.web.routes import api, pages
 
-app.include_router(api.router, prefix="/api", tags=["api"])
 app.include_router(pages.router, tags=["pages"])
+app.include_router(api.router, prefix="/api", tags=["api"])
 
 
 if __name__ == "__main__":
